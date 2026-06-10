@@ -46,10 +46,10 @@ export default function CreateRoomPage() {
   return (
     <div className="px-4 pt-6 pb-8">
       <div className="mb-4 flex items-center gap-2">
-        <Link to="/chat" className="text-gray-400">
+        <Link to="/chat" className="text-gray-500">
           ←
         </Link>
-        <h1 className="text-2xl font-bold text-violet-400">New group</h1>
+        <h1 className="text-2xl font-bold text-violet-600">New group</h1>
       </div>
 
       <form onSubmit={createRoom} className="space-y-4">
@@ -60,15 +60,15 @@ export default function CreateRoomPage() {
             onChange={(e) => setName(e.target.value)}
             maxLength={50}
             placeholder="e.g. Weekend crew"
-            className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-violet-400 focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm focus:border-violet-500 focus:outline-none"
           />
         </div>
 
         <div>
           <label className="mb-1 block text-xs uppercase tracking-wide text-gray-500">Add matches</label>
-          {loading && <p className="text-sm text-gray-400">Loading...</p>}
+          {loading && <p className="text-sm text-gray-500">Loading...</p>}
           {!loading && matches.length === 0 && (
-            <p className="text-sm text-gray-400">You need at least one match to start a group.</p>
+            <p className="text-sm text-gray-500">You need at least one match to start a group.</p>
           )}
           <div className="space-y-2">
             {matches.map((m) => {
@@ -79,10 +79,10 @@ export default function CreateRoomPage() {
                   key={m.matchId}
                   onClick={() => toggle(m.user.id)}
                   className={`flex w-full items-center gap-3 rounded-xl border p-3 text-left ${
-                    checked ? 'border-violet-400 bg-violet-500/10' : 'border-gray-800 bg-gray-900'
+                    checked ? 'border-violet-500 bg-violet-50' : 'border-gray-200 bg-white'
                   }`}
                 >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gray-800 text-xl">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gray-100 text-xl">
                     {m.user?.profile?.mainPhoto ? (
                       <img src={m.user.profile.mainPhoto} alt={m.user.name} className="h-full w-full object-cover" />
                     ) : (
@@ -90,14 +90,14 @@ export default function CreateRoomPage() {
                     )}
                   </div>
                   <span className="flex-1 text-sm font-semibold">{m.user?.name}</span>
-                  {checked && <span className="text-violet-400">✓</span>}
+                  {checked && <span className="text-violet-600">✓</span>}
                 </button>
               );
             })}
           </div>
         </div>
 
-        {error && <p className="text-sm text-red-400">{error}</p>}
+        {error && <p className="text-sm text-red-500">{error}</p>}
 
         <button
           type="submit"

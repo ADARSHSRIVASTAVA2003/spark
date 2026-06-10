@@ -52,8 +52,8 @@ export default function RegisterPage() {
 
   return (
     <div className="flex min-h-full flex-col items-center justify-center px-6 py-12">
-      <h1 className="mb-1 text-3xl font-bold text-violet-400">Spark</h1>
-      <p className="mb-8 text-sm text-gray-400">Create your account</p>
+      <h1 className="mb-1 text-3xl font-bold text-violet-600">Spark</h1>
+      <p className="mb-8 text-sm text-gray-500">Create your account</p>
 
       <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-4">
         <input
@@ -61,7 +61,7 @@ export default function RegisterPage() {
           placeholder="Name"
           value={form.name}
           onChange={(e) => update('name', e.target.value)}
-          className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-violet-400 focus:outline-none"
+          className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm focus:border-violet-500 focus:outline-none"
         />
         <input
           type="email"
@@ -69,7 +69,7 @@ export default function RegisterPage() {
           placeholder="Email"
           value={form.email}
           onChange={(e) => update('email', e.target.value)}
-          className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-violet-400 focus:outline-none"
+          className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm focus:border-violet-500 focus:outline-none"
         />
         <input
           type="password"
@@ -78,7 +78,7 @@ export default function RegisterPage() {
           placeholder="Password (min 8 characters)"
           value={form.password}
           onChange={(e) => update('password', e.target.value)}
-          className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-violet-400 focus:outline-none"
+          className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm focus:border-violet-500 focus:outline-none"
         />
         <input
           type="number"
@@ -88,7 +88,7 @@ export default function RegisterPage() {
           placeholder="Age"
           value={form.age}
           onChange={(e) => update('age', e.target.value)}
-          className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-violet-400 focus:outline-none"
+          className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm focus:border-violet-500 focus:outline-none"
         />
 
         <div>
@@ -101,8 +101,8 @@ export default function RegisterPage() {
                 onClick={() => update('gender', g)}
                 className={`rounded-lg border px-2 py-2 text-xs capitalize ${
                   form.gender === g
-                    ? 'border-violet-400 bg-violet-500/20 text-violet-300'
-                    : 'border-gray-700 text-gray-400'
+                    ? 'border-violet-500 bg-violet-50 text-violet-600'
+                    : 'border-gray-300 text-gray-500'
                 }`}
               >
                 {g}
@@ -123,8 +123,8 @@ export default function RegisterPage() {
                 onClick={() => toggleLookingFor(g)}
                 className={`rounded-lg border px-2 py-2 text-xs capitalize ${
                   form.lookingFor.includes(g)
-                    ? 'border-violet-400 bg-violet-500/20 text-violet-300'
-                    : 'border-gray-700 text-gray-400'
+                    ? 'border-violet-500 bg-violet-50 text-violet-600'
+                    : 'border-gray-300 text-gray-500'
                 }`}
               >
                 {g}
@@ -133,7 +133,7 @@ export default function RegisterPage() {
           </div>
         </div>
 
-        {error && <p className="text-sm text-red-400">{error}</p>}
+        {error && <p className="text-sm text-red-500">{error}</p>}
 
         <button
           type="submit"
@@ -144,9 +144,9 @@ export default function RegisterPage() {
         </button>
       </form>
 
-      <p className="mt-6 text-sm text-gray-400">
+      <p className="mt-6 text-sm text-gray-500">
         Already have an account?{' '}
-        <Link to="/login" className="text-violet-400 hover:underline">
+        <Link to="/login" className="text-violet-600 hover:underline">
           Log in
         </Link>
       </p>

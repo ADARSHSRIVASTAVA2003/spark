@@ -49,13 +49,13 @@ export default function FeedPage() {
 
   return (
     <div className="flex h-full flex-col px-4 pt-6">
-      <h1 className="mb-4 text-center text-2xl font-bold text-violet-400">Discover</h1>
+      <h1 className="mb-4 text-center text-2xl font-bold text-violet-600">Discover</h1>
 
       <div className="relative mx-auto w-full max-w-sm flex-1">
-        {loading && <p className="mt-12 text-center text-gray-400">Loading...</p>}
-        {!loading && error && <p className="mt-12 text-center text-red-400">{error}</p>}
+        {loading && <p className="mt-12 text-center text-gray-500">Loading...</p>}
+        {!loading && error && <p className="mt-12 text-center text-red-500">{error}</p>}
         {!loading && !error && feed.length === 0 && (
-          <div className="mt-12 text-center text-gray-400">
+          <div className="mt-12 text-center text-gray-500">
             <p className="mb-4">No more profiles right now.</p>
             <button onClick={loadFeed} className="rounded-lg bg-violet-500 px-4 py-2 text-sm font-semibold text-white">
               Refresh
@@ -79,13 +79,13 @@ export default function FeedPage() {
         <div className="mt-4 flex justify-center gap-6 pb-4">
           <button
             onClick={() => handleSwipe('pass')}
-            className="flex h-14 w-14 items-center justify-center rounded-full border border-gray-700 bg-gray-900 text-2xl text-red-400 shadow-lg"
+            className="flex h-14 w-14 items-center justify-center rounded-full border border-gray-300 bg-white text-2xl text-red-500 shadow-lg"
           >
             ✕
           </button>
           <button
             onClick={() => handleSwipe('like')}
-            className="flex h-14 w-14 items-center justify-center rounded-full border border-gray-700 bg-gray-900 text-2xl text-green-400 shadow-lg"
+            className="flex h-14 w-14 items-center justify-center rounded-full border border-gray-300 bg-white text-2xl text-green-600 shadow-lg"
           >
             ♥
           </button>
@@ -98,15 +98,19 @@ export default function FeedPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/80 px-6 text-center"
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/50 px-6 text-center"
           >
-            <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} className="space-y-4">
-              <h2 className="text-3xl font-bold text-violet-400">It's a match!</h2>
-              <p className="text-gray-300">You and {matchInfo.name} liked each other.</p>
+            <motion.div
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              className="space-y-4 rounded-2xl bg-white px-8 py-10 shadow-xl"
+            >
+              <h2 className="text-3xl font-bold text-violet-600">It's a match!</h2>
+              <p className="text-gray-700">You and {matchInfo.name} liked each other.</p>
               <div className="flex justify-center gap-3 pt-2">
                 <button
                   onClick={() => setMatchInfo(null)}
-                  className="rounded-lg border border-gray-600 px-4 py-2 text-sm"
+                  className="rounded-lg border border-gray-300 px-4 py-2 text-sm text-gray-700"
                 >
                   Keep swiping
                 </button>

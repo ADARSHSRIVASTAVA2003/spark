@@ -145,6 +145,10 @@ router.get(
           coordinates: (u.location?.coordinates || []).map(roundCoord),
         },
         distanceKm: Math.round((u.distanceMeters / 1000) * 10) / 10,
+        status: {
+          isOnline: u.settings?.showOnline ? !!u.status?.isOnline : undefined,
+          lastSeen: u.settings?.showOnline ? u.status?.lastSeen : undefined,
+        },
       }));
 
       res.json({ nearby });

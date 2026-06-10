@@ -167,8 +167,8 @@ export default function ChatThreadPage() {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex items-center gap-2 border-b border-gray-800 px-4 py-3">
-        <Link to="/chat" className="text-gray-400">
+      <div className="flex items-center gap-2 border-b border-gray-200 px-4 py-3">
+        <Link to="/chat" className="text-gray-500">
           ←
         </Link>
         <div className="min-w-0 flex-1">
@@ -179,9 +179,9 @@ export default function ChatThreadPage() {
             <p className="truncate text-xs text-gray-500">{conversation.participants.length} members</p>
           )}
         </div>
-        {otherTyping && <span className="text-xs text-violet-400">typing...</span>}
+        {otherTyping && <span className="text-xs text-violet-600">typing...</span>}
         {isRoom && (
-          <button onClick={leaveRoom} className="rounded-full border border-gray-700 px-3 py-1 text-xs text-gray-400">
+          <button onClick={leaveRoom} className="rounded-full border border-gray-300 px-3 py-1 text-xs text-gray-500">
             Leave
           </button>
         )}
@@ -190,7 +190,7 @@ export default function ChatThreadPage() {
             <button
               onClick={() => startCall(convId, otherUser, 'audio')}
               disabled={callState !== 'idle'}
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-800 text-lg disabled:opacity-50"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-lg disabled:opacity-50"
               title="Voice call"
             >
               📞
@@ -198,7 +198,7 @@ export default function ChatThreadPage() {
             <button
               onClick={() => startCall(convId, otherUser, 'video')}
               disabled={callState !== 'idle'}
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-800 text-lg disabled:opacity-50"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-lg disabled:opacity-50"
               title="Video call"
             >
               🎥
@@ -213,18 +213,18 @@ export default function ChatThreadPage() {
             Load older messages
           </button>
         )}
-        {error && <p className="text-center text-sm text-red-400">{error}</p>}
+        {error && <p className="text-center text-sm text-red-500">{error}</p>}
         {messages.map((m) => {
           const mine = m.senderId === user.id;
           return (
             <div key={m._id} className={`flex ${mine ? 'justify-end' : 'justify-start'}`}>
               <div
                 className={`max-w-[75%] rounded-2xl px-4 py-2 text-sm ${
-                  mine ? 'bg-violet-500 text-white' : 'bg-gray-800 text-gray-100'
+                  mine ? 'bg-violet-500 text-white' : 'bg-gray-100 text-gray-900'
                 }`}
               >
                 {isRoom && !mine && (
-                  <p className="mb-0.5 text-xs font-semibold text-violet-300">
+                  <p className="mb-0.5 text-xs font-semibold text-violet-600">
                     {memberNames.get(m.senderId) || 'Member'}
                   </p>
                 )}
@@ -244,12 +244,12 @@ export default function ChatThreadPage() {
         <div ref={bottomRef} />
       </div>
 
-      <form onSubmit={sendMessage} className="flex gap-2 border-t border-gray-800 p-3">
+      <form onSubmit={sendMessage} className="flex gap-2 border-t border-gray-200 p-3">
         <input
           value={text}
           onChange={handleChange}
           placeholder="Type a message..."
-          className="flex-1 rounded-full border border-gray-700 bg-gray-900 px-4 py-2 text-sm focus:border-violet-400 focus:outline-none"
+          className="flex-1 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm focus:border-violet-500 focus:outline-none"
         />
         <button
           type="submit"

@@ -39,8 +39,8 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-full flex-col items-center justify-center px-6 py-12">
-      <h1 className="mb-1 text-3xl font-bold text-violet-400">Spark</h1>
-      <p className="mb-8 text-sm text-gray-400">Sign in to continue</p>
+      <h1 className="mb-1 text-3xl font-bold text-violet-600">Spark</h1>
+      <p className="mb-8 text-sm text-gray-500">Sign in to continue</p>
 
       <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-4">
         <input
@@ -49,7 +49,7 @@ export default function LoginPage() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-violet-400 focus:outline-none"
+          className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm focus:border-violet-500 focus:outline-none"
         />
         <input
           type="password"
@@ -57,10 +57,10 @@ export default function LoginPage() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-violet-400 focus:outline-none"
+          className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm focus:border-violet-500 focus:outline-none"
         />
 
-        {error && <p className="text-sm text-red-400">{error}</p>}
+        {error && <p className="text-sm text-red-500">{error}</p>}
 
         <button
           type="submit"
@@ -74,14 +74,14 @@ export default function LoginPage() {
       <button
         onClick={handleGuest}
         disabled={submitting}
-        className="mt-4 w-full max-w-sm rounded-lg border border-gray-700 py-3 text-sm font-semibold text-gray-300 transition hover:border-gray-500 disabled:opacity-50"
+        className="mt-4 w-full max-w-sm rounded-lg border border-gray-300 py-3 text-sm font-semibold text-gray-700 transition hover:border-gray-400 disabled:opacity-50"
       >
         Continue as guest
       </button>
 
-      <p className="mt-6 text-sm text-gray-400">
+      <p className="mt-6 text-sm text-gray-500">
         No account?{' '}
-        <Link to="/register" className="text-violet-400 hover:underline">
+        <Link to="/register" className="text-violet-600 hover:underline">
           Sign up
         </Link>
       </p>

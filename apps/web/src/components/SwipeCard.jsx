@@ -20,7 +20,7 @@ export default function SwipeCard({ person, onSwipe, isTop }) {
 
   return (
     <motion.div
-      className="absolute inset-0 mx-auto flex max-w-sm flex-col overflow-hidden rounded-2xl border border-gray-800 bg-gray-900 shadow-xl"
+      className="absolute inset-0 mx-auto flex max-w-sm flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl"
       style={{ x, rotate }}
       drag={isTop ? 'x' : false}
       dragConstraints={{ left: 0, right: 0 }}
@@ -29,7 +29,7 @@ export default function SwipeCard({ person, onSwipe, isTop }) {
       animate={{ scale: isTop ? 1 : 0.96, opacity: isTop ? 1 : 0.6 }}
       exit={{ x: x.get() > 0 ? 400 : -400, opacity: 0, transition: { duration: 0.25 } }}
     >
-      <div className="relative h-[60%] min-h-[320px] bg-gray-800">
+      <div className="relative h-[60%] min-h-[320px] bg-gray-100">
         {photo ? (
           <img src={photo} alt={person.name} className="h-full w-full object-cover" />
         ) : (
@@ -38,13 +38,13 @@ export default function SwipeCard({ person, onSwipe, isTop }) {
 
         <motion.div
           style={{ opacity: likeOpacity }}
-          className="absolute left-6 top-6 rotate-[-15deg] rounded-lg border-4 border-green-400 px-4 py-1 text-2xl font-bold text-green-400"
+          className="absolute left-6 top-6 rotate-[-15deg] rounded-lg border-4 border-green-500 px-4 py-1 text-2xl font-bold text-green-600"
         >
           LIKE
         </motion.div>
         <motion.div
           style={{ opacity: passOpacity }}
-          className="absolute right-6 top-6 rotate-[15deg] rounded-lg border-4 border-red-400 px-4 py-1 text-2xl font-bold text-red-400"
+          className="absolute right-6 top-6 rotate-[15deg] rounded-lg border-4 border-red-400 px-4 py-1 text-2xl font-bold text-red-500"
         >
           PASS
         </motion.div>
@@ -61,12 +61,12 @@ export default function SwipeCard({ person, onSwipe, isTop }) {
           {person.name}
           {person.profile?.age ? `, ${person.profile.age}` : ''}
         </h2>
-        {person.location?.city && <p className="text-sm text-gray-400">{person.location.city}</p>}
-        {person.profile?.bio && <p className="text-sm text-gray-300">{person.profile.bio}</p>}
+        {person.location?.city && <p className="text-sm text-gray-500">{person.location.city}</p>}
+        {person.profile?.bio && <p className="text-sm text-gray-700">{person.profile.bio}</p>}
         {person.profile?.interests?.length > 0 && (
           <div className="flex flex-wrap gap-2 pt-1">
             {person.profile.interests.map((interest) => (
-              <span key={interest} className="rounded-full bg-gray-800 px-3 py-1 text-xs text-gray-300">
+              <span key={interest} className="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-700">
                 {interest}
               </span>
             ))}

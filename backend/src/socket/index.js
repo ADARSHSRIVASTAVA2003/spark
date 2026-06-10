@@ -31,12 +31,14 @@ function initSocket(server, corsOrigins) {
       'status.isOnline': true,
       'status.lastSeen': new Date(),
     }).catch(() => {});
+    socket.broadcast.emit('user:online', { userId: socket.userId });
 
     socket.on('disconnect', () => {
       User.findByIdAndUpdate(socket.userId, {
         'status.isOnline': false,
         'status.lastSeen': new Date(),
       }).catch(() => {});
+      socket.broadcast.emit('user:offline', { userId: socket.userId, lastSeen: new Date() });
     });
   });
 
