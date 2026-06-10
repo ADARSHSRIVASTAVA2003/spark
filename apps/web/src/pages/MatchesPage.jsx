@@ -22,7 +22,7 @@ export default function MatchesPage() {
 
   return (
     <div className="px-4 pt-6">
-      <h1 className="mb-4 text-2xl font-bold text-pink-400">Matches</h1>
+      <h1 className="mb-4 text-2xl font-bold text-violet-400">Matches</h1>
 
       {loading && <p className="text-center text-gray-400">Loading...</p>}
       {error && <p className="text-center text-red-400">{error}</p>}

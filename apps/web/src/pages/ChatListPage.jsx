@@ -43,7 +43,7 @@ export default function ChatListPage() {
   return (
     <div className="px-4 pt-6">
       <div className="mb-4 flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-pink-400">Messages</h1>
+        <h1 className="text-2xl font-bold text-violet-400">Messages</h1>
         <Link to="/chat/new-group" className="rounded-full border border-gray-700 px-3 py-1 text-xs">
           + New group
         </Link>
@@ -75,7 +75,7 @@ export default function ChatListPage() {
                 <p className="truncate text-xs text-gray-400">{c.lastMessage?.content || 'Say hi!'}</p>
               </div>
               {c.unreadCount > 0 && (
-                <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-pink-500 px-1.5 text-xs font-semibold text-white">
+                <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-violet-500 px-1.5 text-xs font-semibold text-white">
                   {c.unreadCount}
                 </span>
               )}

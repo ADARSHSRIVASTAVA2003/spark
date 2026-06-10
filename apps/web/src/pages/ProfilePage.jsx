@@ -86,7 +86,7 @@ export default function ProfilePage() {
 
   return (
     <div className="px-4 pt-6 pb-8">
-      <h1 className="mb-4 text-2xl font-bold text-pink-400">Profile</h1>
+      <h1 className="mb-4 text-2xl font-bold text-violet-400">Profile</h1>
 
       <div className="mb-4 flex items-center gap-3 rounded-xl border border-gray-800 bg-gray-900 p-4">
         <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full bg-gray-800 text-2xl">
@@ -114,7 +114,7 @@ export default function ProfilePage() {
               onChange={(e) => setBio(e.target.value)}
               maxLength={500}
               rows={3}
-              className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-pink-400 focus:outline-none"
+              className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-violet-400 focus:outline-none"
             />
           </div>
 
@@ -125,7 +125,7 @@ export default function ProfilePage() {
             <input
               value={interests}
               onChange={(e) => setInterests(e.target.value)}
-              className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-pink-400 focus:outline-none"
+              className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-violet-400 focus:outline-none"
             />
           </div>
 
@@ -156,10 +156,10 @@ export default function ProfilePage() {
                       <img
                         src={p}
                         alt=""
-                        className={`h-24 w-full rounded-lg object-cover ${isMain ? 'ring-2 ring-pink-400' : ''}`}
+                        className={`h-24 w-full rounded-lg object-cover ${isMain ? 'ring-2 ring-violet-400' : ''}`}
                       />
                       {isMain && (
-                        <span className="absolute left-1 top-1 rounded bg-pink-500 px-1.5 py-0.5 text-[10px] font-semibold text-white">
+                        <span className="absolute left-1 top-1 rounded bg-violet-500 px-1.5 py-0.5 text-[10px] font-semibold text-white">
                           Main
                         </span>
                       )}
@@ -187,7 +187,7 @@ export default function ProfilePage() {
               </div>
             )}
             {(user?.profile?.photos?.length || 0) < 9 && (
-              <label className="block w-full cursor-pointer rounded-lg border border-dashed border-gray-700 px-4 py-3 text-center text-sm text-gray-400 hover:border-pink-400 hover:text-pink-400">
+              <label className="block w-full cursor-pointer rounded-lg border border-dashed border-gray-700 px-4 py-3 text-center text-sm text-gray-400 hover:border-violet-400 hover:text-violet-400">
                 {uploading ? 'Uploading...' : 'Upload photo'}
                 <input
                   type="file"
@@ -200,12 +200,12 @@ export default function ProfilePage() {
             )}
           </div>
 
-          {message && <p className="text-sm text-pink-400">{message}</p>}
+          {message && <p className="text-sm text-violet-400">{message}</p>}
 
           <button
             type="submit"
             disabled={saving}
-            className="w-full rounded-lg bg-pink-500 py-3 text-sm font-semibold text-white disabled:opacity-50"
+            className="w-full rounded-lg bg-violet-500 py-3 text-sm font-semibold text-white disabled:opacity-50"
           >
             {saving ? 'Saving...' : 'Save changes'}
           </button>

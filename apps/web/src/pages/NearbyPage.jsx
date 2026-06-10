@@ -46,7 +46,7 @@ export default function NearbyPage() {
 
   return (
     <div className="px-4 pt-6">
-      <h1 className="mb-4 text-2xl font-bold text-pink-400">Nearby</h1>
+      <h1 className="mb-4 text-2xl font-bold text-violet-400">Nearby</h1>
 
       {!hasLocation && (
         <div className="mb-4 rounded-lg border border-gray-800 bg-gray-900 p-4 text-sm text-gray-300">
@@ -57,7 +57,7 @@ export default function NearbyPage() {
           <button
             onClick={detectLocation}
             disabled={locating}
-            className="rounded-lg bg-pink-500 px-4 py-2 text-sm font-semibold text-white disabled:opacity-50"
+            className="rounded-lg bg-violet-500 px-4 py-2 text-sm font-semibold text-white disabled:opacity-50"
           >
             {locating ? 'Detecting...' : 'Use my location'}
           </button>

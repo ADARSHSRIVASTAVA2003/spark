@@ -52,7 +52,7 @@ export default function RegisterPage() {
 
   return (
     <div className="flex min-h-full flex-col items-center justify-center px-6 py-12">
-      <h1 className="mb-1 text-3xl font-bold text-pink-400">Spark</h1>
+      <h1 className="mb-1 text-3xl font-bold text-violet-400">Spark</h1>
       <p className="mb-8 text-sm text-gray-400">Create your account</p>
 
       <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-4">
@@ -61,7 +61,7 @@ export default function RegisterPage() {
           placeholder="Name"
           value={form.name}
           onChange={(e) => update('name', e.target.value)}
-          className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-pink-400 focus:outline-none"
+          className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-violet-400 focus:outline-none"
         />
         <input
           type="email"
@@ -69,7 +69,7 @@ export default function RegisterPage() {
           placeholder="Email"
           value={form.email}
           onChange={(e) => update('email', e.target.value)}
-          className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-pink-400 focus:outline-none"
+          className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-violet-400 focus:outline-none"
         />
         <input
           type="password"
@@ -78,7 +78,7 @@ export default function RegisterPage() {
           placeholder="Password (min 8 characters)"
           value={form.password}
           onChange={(e) => update('password', e.target.value)}
-          className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-pink-400 focus:outline-none"
+          className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-violet-400 focus:outline-none"
         />
         <input
           type="number"
@@ -88,7 +88,7 @@ export default function RegisterPage() {
           placeholder="Age"
           value={form.age}
           onChange={(e) => update('age', e.target.value)}
-          className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-pink-400 focus:outline-none"
+          className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-violet-400 focus:outline-none"
         />
 
         <div>
@@ -101,7 +101,7 @@ export default function RegisterPage() {
                 onClick={() => update('gender', g)}
                 className={`rounded-lg border px-2 py-2 text-xs capitalize ${
                   form.gender === g
-                    ? 'border-pink-400 bg-pink-500/20 text-pink-300'
+                    ? 'border-violet-400 bg-violet-500/20 text-violet-300'
                     : 'border-gray-700 text-gray-400'
                 }`}
               >
@@ -123,7 +123,7 @@ export default function RegisterPage() {
                 onClick={() => toggleLookingFor(g)}
                 className={`rounded-lg border px-2 py-2 text-xs capitalize ${
                   form.lookingFor.includes(g)
-                    ? 'border-pink-400 bg-pink-500/20 text-pink-300'
+                    ? 'border-violet-400 bg-violet-500/20 text-violet-300'
                     : 'border-gray-700 text-gray-400'
                 }`}
               >
@@ -138,7 +138,7 @@ export default function RegisterPage() {
         <button
           type="submit"
           disabled={submitting}
-          className="w-full rounded-lg bg-pink-500 py-3 text-sm font-semibold text-white transition hover:bg-pink-600 disabled:opacity-50"
+          className="w-full rounded-lg bg-violet-500 py-3 text-sm font-semibold text-white transition hover:bg-violet-600 disabled:opacity-50"
         >
           Sign up
         </button>
@@ -146,7 +146,7 @@ export default function RegisterPage() {
 
       <p className="mt-6 text-sm text-gray-400">
         Already have an account?{' '}
-        <Link to="/login" className="text-pink-400 hover:underline">
+        <Link to="/login" className="text-violet-400 hover:underline">
           Log in
         </Link>
       </p>

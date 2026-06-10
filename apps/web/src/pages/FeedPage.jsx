@@ -49,7 +49,7 @@ export default function FeedPage() {
 
   return (
     <div className="flex h-full flex-col px-4 pt-6">
-      <h1 className="mb-4 text-center text-2xl font-bold text-pink-400">Discover</h1>
+      <h1 className="mb-4 text-center text-2xl font-bold text-violet-400">Discover</h1>
 
       <div className="relative mx-auto w-full max-w-sm flex-1">
         {loading && <p className="mt-12 text-center text-gray-400">Loading...</p>}
@@ -57,7 +57,7 @@ export default function FeedPage() {
         {!loading && !error && feed.length === 0 && (
           <div className="mt-12 text-center text-gray-400">
             <p className="mb-4">No more profiles right now.</p>
-            <button onClick={loadFeed} className="rounded-lg bg-pink-500 px-4 py-2 text-sm font-semibold text-white">
+            <button onClick={loadFeed} className="rounded-lg bg-violet-500 px-4 py-2 text-sm font-semibold text-white">
               Refresh
             </button>
           </div>
@@ -101,7 +101,7 @@ export default function FeedPage() {
             className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/80 px-6 text-center"
           >
             <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} className="space-y-4">
-              <h2 className="text-3xl font-bold text-pink-400">It's a match!</h2>
+              <h2 className="text-3xl font-bold text-violet-400">It's a match!</h2>
               <p className="text-gray-300">You and {matchInfo.name} liked each other.</p>
               <div className="flex justify-center gap-3 pt-2">
                 <button
@@ -113,7 +113,7 @@ export default function FeedPage() {
                 <Link
                   to={`/chat/${matchInfo.conversationId}`}
                   onClick={() => setMatchInfo(null)}
-                  className="rounded-lg bg-pink-500 px-4 py-2 text-sm font-semibold text-white"
+                  className="rounded-lg bg-violet-500 px-4 py-2 text-sm font-semibold text-white"
                 >
                   Send a message
                 </Link>

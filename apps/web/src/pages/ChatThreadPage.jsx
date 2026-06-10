@@ -179,7 +179,7 @@ export default function ChatThreadPage() {
             <p className="truncate text-xs text-gray-500">{conversation.participants.length} members</p>
           )}
         </div>
-        {otherTyping && <span className="text-xs text-pink-400">typing...</span>}
+        {otherTyping && <span className="text-xs text-violet-400">typing...</span>}
         {isRoom && (
           <button onClick={leaveRoom} className="rounded-full border border-gray-700 px-3 py-1 text-xs text-gray-400">
             Leave
@@ -220,11 +220,11 @@ export default function ChatThreadPage() {
             <div key={m._id} className={`flex ${mine ? 'justify-end' : 'justify-start'}`}>
               <div
                 className={`max-w-[75%] rounded-2xl px-4 py-2 text-sm ${
-                  mine ? 'bg-pink-500 text-white' : 'bg-gray-800 text-gray-100'
+                  mine ? 'bg-violet-500 text-white' : 'bg-gray-800 text-gray-100'
                 }`}
               >
                 {isRoom && !mine && (
-                  <p className="mb-0.5 text-xs font-semibold text-pink-300">
+                  <p className="mb-0.5 text-xs font-semibold text-violet-300">
                     {memberNames.get(m.senderId) || 'Member'}
                   </p>
                 )}
@@ -249,11 +249,11 @@ export default function ChatThreadPage() {
           value={text}
           onChange={handleChange}
           placeholder="Type a message..."
-          className="flex-1 rounded-full border border-gray-700 bg-gray-900 px-4 py-2 text-sm focus:border-pink-400 focus:outline-none"
+          className="flex-1 rounded-full border border-gray-700 bg-gray-900 px-4 py-2 text-sm focus:border-violet-400 focus:outline-none"
         />
         <button
           type="submit"
-          className="rounded-full bg-pink-500 px-4 py-2 text-sm font-semibold text-white"
+          className="rounded-full bg-violet-500 px-4 py-2 text-sm font-semibold text-white"
         >
           Send
         </button>

@@ -49,7 +49,7 @@ export default function CreateRoomPage() {
         <Link to="/chat" className="text-gray-400">
           ←
         </Link>
-        <h1 className="text-2xl font-bold text-pink-400">New group</h1>
+        <h1 className="text-2xl font-bold text-violet-400">New group</h1>
       </div>
 
       <form onSubmit={createRoom} className="space-y-4">
@@ -60,7 +60,7 @@ export default function CreateRoomPage() {
             onChange={(e) => setName(e.target.value)}
             maxLength={50}
             placeholder="e.g. Weekend crew"
-            className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-pink-400 focus:outline-none"
+            className="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-3 text-sm focus:border-violet-400 focus:outline-none"
           />
         </div>
 
@@ -79,7 +79,7 @@ export default function CreateRoomPage() {
                   key={m.matchId}
                   onClick={() => toggle(m.user.id)}
                   className={`flex w-full items-center gap-3 rounded-xl border p-3 text-left ${
-                    checked ? 'border-pink-400 bg-pink-500/10' : 'border-gray-800 bg-gray-900'
+                    checked ? 'border-violet-400 bg-violet-500/10' : 'border-gray-800 bg-gray-900'
                   }`}
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gray-800 text-xl">
@@ -90,7 +90,7 @@ export default function CreateRoomPage() {
                     )}
                   </div>
                   <span className="flex-1 text-sm font-semibold">{m.user?.name}</span>
-                  {checked && <span className="text-pink-400">✓</span>}
+                  {checked && <span className="text-violet-400">✓</span>}
                 </button>
               );
             })}
@@ -102,7 +102,7 @@ export default function CreateRoomPage() {
         <button
           type="submit"
           disabled={creating || !name.trim() || selected.length === 0}
-          className="w-full rounded-lg bg-pink-500 py-3 text-sm font-semibold text-white disabled:opacity-50"
+          className="w-full rounded-lg bg-violet-500 py-3 text-sm font-semibold text-white disabled:opacity-50"
         >
           {creating ? 'Creating...' : 'Create group'}
         </button>

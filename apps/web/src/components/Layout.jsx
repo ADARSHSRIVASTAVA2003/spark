@@ -21,7 +21,7 @@ export default function Layout() {
             to={item.to}
             className={({ isActive }) =>
               `flex flex-1 flex-col items-center gap-0.5 py-2 text-xs ${
-                isActive ? 'text-pink-400' : 'text-gray-500'
+                isActive ? 'text-violet-400' : 'text-gray-500'
               }`
             }
           >
