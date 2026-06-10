@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+export const API_URL = import.meta.env.VITE_API_URL || '';
+
 let accessToken = null;
 let onUnauthorized = null;
 
@@ -16,7 +18,7 @@ export function setUnauthorizedHandler(handler) {
 }
 
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: `${API_URL}/api`,
   withCredentials: true,
 });
 
@@ -39,7 +41,7 @@ api.interceptors.response.use(
       try {
         if (!refreshPromise) {
           refreshPromise = axios
-            .post('/api/auth/refresh', {}, { withCredentials: true })
+            .post(`${API_URL}/api/auth/refresh`, {}, { withCredentials: true })
             .finally(() => {
               refreshPromise = null;
             });

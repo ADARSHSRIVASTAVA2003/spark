@@ -15,7 +15,7 @@ const router = express.Router();
 const REFRESH_COOKIE_NAME = 'refreshToken';
 const REFRESH_COOKIE_OPTS = {
   httpOnly: true,
-  sameSite: 'strict',
+  sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
   secure: process.env.NODE_ENV === 'production',
   path: '/api/auth',
   maxAge: 7 * 24 * 60 * 60 * 1000, // 7d

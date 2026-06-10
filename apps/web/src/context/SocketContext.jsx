@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import { useAuth } from './AuthContext';
+import { API_URL } from '../api/client';
 
 const SocketContext = createContext(null);
 
@@ -16,8 +17,8 @@ export function SocketProvider({ children }) {
       return undefined;
     }
 
-    const base = io({ auth: { token } });
-    const chat = io('/chat', { auth: { token } });
+    const base = io(API_URL || undefined, { auth: { token } });
+    const chat = io(API_URL ? `${API_URL}/chat` : '/chat', { auth: { token } });
 
     setSocket(base);
     setChatSocket(chat);
