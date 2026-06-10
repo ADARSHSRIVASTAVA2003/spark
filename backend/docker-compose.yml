@@ -1,0 +1,35 @@
+version: "3.7"
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: date222-mongo
+    restart: unless-stopped
+    ports:
+      - "27018:27017"
+    volumes:
+      - date222-mongo-data:/data/db
+
+  backend:
+    build: .
+    container_name: date222-backend
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: 4000
+      NODE_ENV: production
+      MONGODB_URI: mongodb://mongo:27017/date222
+      JWT_ACCESS_SECRET: change_this_access_secret
+      JWT_REFRESH_SECRET: change_this_refresh_secret
+      JWT_ACCESS_TTL: 15m
+      JWT_REFRESH_TTL: 7d
+      CORS_ORIGINS: http://localhost:5173
+      IP_API_URL: http://ip-api.com/json
+    volumes:
+      - ./uploads:/app/uploads
+    depends_on:
+      - mongo
+
+volumes:
+  date222-mongo-data:
