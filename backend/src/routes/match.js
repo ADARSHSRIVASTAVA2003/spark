@@ -215,4 +215,57 @@ router.get('/matches', requireAuth, async (req, res, next) => {
   }
 });
 
+// List all eligible users (matching gender preference and age range), regardless of like history or location
+router.get(
+  '/suggestions',
+  requireAuth,
+  [query('limit').optional().isInt({ min: 1, max: 100 })],
+  validate,
+  async (req, res, next) => {
+    try {
+      const me = await User.findById(req.user.id);
+      if (!me) return res.status(404).json({ error: 'User not found' });
+
+      const limit = req.query.limit ? Number(req.query.limit) : 50;
+
+      const excludedIds = new Set([me._id.toString(), ...(me.blockedUsers || []).map((id) => id.toString())]);
+      const blockedByOthers = await User.find({ blockedUsers: me._id }).select('_id');
+      blockedByOthers.forEach((u) => excludedIds.add(u._id.toString()));
+
+      const lookingFor = me.profile.lookingFor?.length ? me.profile.lookingFor : undefined;
+
+      const filter = {
+        _id: { $nin: [...excludedIds].map((id) => new mongoose.Types.ObjectId(id)) },
+        'status.isActive': true,
+        'status.isBanned': false,
+        'profile.age': { $gte: me.settings.ageRange.min, $lte: me.settings.ageRange.max },
+        ...(lookingFor ? { 'profile.gender': { $in: lookingFor } } : {}),
+      };
+
+      const users = await User.find(filter).limit(limit).lean();
+
+      const suggestions = users.map((u) => ({
+        id: u._id,
+        name: u.name,
+        profile: {
+          age: u.profile?.age,
+          gender: u.profile?.gender,
+          bio: u.profile?.bio,
+          interests: u.profile?.interests,
+          mainPhoto: u.profile?.mainPhoto,
+          isVerified: u.profile?.isVerified,
+        },
+        status: {
+          isOnline: u.settings?.showOnline ? !!u.status?.isOnline : undefined,
+          lastSeen: u.settings?.showOnline ? u.status?.lastSeen : undefined,
+        },
+      }));
+
+      res.json({ suggestions });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 module.exports = router;

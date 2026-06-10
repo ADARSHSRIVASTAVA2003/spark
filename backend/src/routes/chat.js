@@ -3,6 +3,7 @@ const { body, param, query } = require('express-validator');
 const Conversation = require('../models/Conversation');
 const Message = require('../models/Message');
 const Match = require('../models/Match');
+const User = require('../models/User');
 const { requireAuth } = require('../middleware/auth');
 const validate = require('../middleware/validate');
 
@@ -62,6 +63,49 @@ router.get(
       const otherUser = conversation.participants.find((p) => p._id.toString() !== req.user.id);
 
       res.json({ conversation: { id: conversation._id, type: conversation.type, otherUser } });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+// Get or create a direct conversation with another user (no match required)
+router.post(
+  '/conversations/direct',
+  requireAuth,
+  [body('userId').isMongoId()],
+  validate,
+  async (req, res, next) => {
+    try {
+      const { userId } = req.body;
+      if (userId === req.user.id) {
+        return res.status(400).json({ error: 'Cannot start a conversation with yourself' });
+      }
+
+      const [me, other] = await Promise.all([
+        User.findById(req.user.id).select('blockedUsers'),
+        User.findById(userId).select('blockedUsers status'),
+      ]);
+      if (!other || !other.status.isActive || other.status.isBanned) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      if (
+        me.blockedUsers.some((id) => id.toString() === userId) ||
+        other.blockedUsers.some((id) => id.toString() === req.user.id)
+      ) {
+        return res.status(403).json({ error: 'Cannot start a conversation with this user' });
+      }
+
+      const sortedUsers = [req.user.id, userId].sort();
+      let conversation = await Conversation.findOne({
+        type: 'direct',
+        participants: { $all: sortedUsers, $size: 2 },
+      });
+      if (!conversation) {
+        conversation = await Conversation.create({ type: 'direct', participants: sortedUsers });
+      }
+
+      res.status(201).json({ conversation: { id: conversation._id } });
     } catch (err) {
       next(err);
     }

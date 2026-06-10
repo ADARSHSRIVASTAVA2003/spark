@@ -3,6 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 const NAV_ITEMS = [
   { to: '/feed', label: 'Feed', icon: '🔥' },
   { to: '/nearby', label: 'Nearby', icon: '📍' },
+  { to: '/suggest', label: 'Suggest', icon: '✨' },
   { to: '/matches', label: 'Matches', icon: '💜' },
   { to: '/chat', label: 'Chat', icon: '💬' },
   { to: '/profile', label: 'Profile', icon: '👤' },
