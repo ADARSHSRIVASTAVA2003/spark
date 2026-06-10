@@ -196,12 +196,16 @@ router.get('/matches', requireAuth, async (req, res, next) => {
       .populate('users', 'name profile.mainPhoto profile.age status.isOnline status.lastSeen')
       .sort({ matchedAt: -1 });
 
+    const conversations = await Conversation.find({ matchId: { $in: matches.map((m) => m._id) } });
+    const conversationByMatchId = new Map(conversations.map((c) => [c.matchId.toString(), c._id.toString()]));
+
     const result = matches.map((m) => {
       const other = m.users.find((u) => u._id.toString() !== userId);
       return {
         matchId: m._id,
         matchedAt: m.matchedAt,
         user: other,
+        conversationId: conversationByMatchId.get(m._id.toString()) || null,
       };
     });
 

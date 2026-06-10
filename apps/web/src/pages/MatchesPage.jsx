@@ -34,7 +34,7 @@ export default function MatchesPage() {
         {matches.map((m) => (
           <Link
             key={m.matchId}
-            to={`/chat`}
+            to={m.conversationId ? `/chat/${m.conversationId}` : '/chat'}
             className="flex flex-col items-center gap-2 rounded-xl border border-gray-200 bg-white p-3 text-center"
           >
             <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full bg-gray-100 text-2xl">
